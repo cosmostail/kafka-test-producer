@@ -1,0 +1,19 @@
+# ignore all .DS_Store files
+# recursive
+**/.DS_Store
+**/.DS_store
+
+# ignore .idea
+.idea/
+*.iws
+*.iml
+*.ipr
+**/*.iml
+
+# ignore target/
+target/
+**/target/
+
+# ignore dependency-reduced-pom.xml
+dependency-reduced-pom.xml
+**/dependency-reduced-pom.xml
