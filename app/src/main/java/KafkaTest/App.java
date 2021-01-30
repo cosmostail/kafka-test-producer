@@ -5,7 +5,9 @@ package KafkaTest;
 
 import io.confluent.kafka.serializers.AbstractKafkaAvroSerDeConfig;
 import io.confluent.kafka.serializers.KafkaAvroSerializer;
-import org.apache.kafka.clients.producer.*;
+import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.Producer;
+import org.apache.kafka.clients.producer.ProducerRecord;
 
 import java.util.Properties;
 
@@ -25,7 +27,7 @@ public class App {
 
         Producer<String, Person> producer = new KafkaProducer<String, Person>(props);
         Person kenny = new Person(12345, "Kenny", "Armstrong", "kenny@example.com");
-        producer.send(new ProducerRecord<String, Person>("scott-test", kenny.getId().toString(), kenny));
+        producer.send(new ProducerRecord<String, Person>("scott-test", String.valueOf(kenny.getId()), kenny));
 
         producer.close();
     }
