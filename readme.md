@@ -17,3 +17,8 @@ docker exec -it broker kafka-console-consumer --topic scott-test --from-beginnin
 ``` 
 java -jar ~/code/avro/avro-tools-1.10.1.jar compile schema app/src/main/resources/avro/KafkaTest/Person.avsc app/src/main/java/
 ```
+
+## run
+``` 
+./gradlew run
+```

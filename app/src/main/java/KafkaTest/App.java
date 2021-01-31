@@ -27,7 +27,7 @@ public class App {
 
         Producer<String, Person> producer = new KafkaProducer<String, Person>(props);
         Person kenny = new Person(12345, "Kenny", "Armstrong", "kenny@example.com");
-        producer.send(new ProducerRecord<String, Person>("scott-test", String.valueOf(kenny.getId()), kenny));
+        producer.send(new ProducerRecord<String, Person>("person-test", String.valueOf(kenny.getId()), kenny));
 
         producer.close();
     }
