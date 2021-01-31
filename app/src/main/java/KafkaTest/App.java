@@ -3,8 +3,8 @@
  */
 package KafkaTest;
 
-import io.confluent.kafka.serializers.AbstractKafkaAvroSerDeConfig;
-import io.confluent.kafka.serializers.KafkaAvroSerializer;
+import com.amazonaws.services.schemaregistry.serializers.avro.AWSKafkaAvroSerializer;
+import com.amazonaws.services.schemaregistry.utils.AWSSchemaRegistryConstants;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -13,7 +13,7 @@ import java.util.Properties;
 
 public class App {
     public String getGreeting() {
-        return "Hello World 2!";
+        return "Hello Producer!";
     }
 
     public static void main(String[] args) {
@@ -22,12 +22,17 @@ public class App {
         Properties props = new Properties();
         props.put("bootstrap.servers", "localhost:9092");
         props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-        props.put("value.serializer", KafkaAvroSerializer.class);
-        props.put(AbstractKafkaAvroSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, "http://localhost:8081");
+        props.put("value.serializer", AWSKafkaAvroSerializer.class);
+        props.put(AWSSchemaRegistryConstants.AWS_REGION, "us-east-1");
+        props.put(AWSSchemaRegistryConstants.SCHEMA_AUTO_REGISTRATION_SETTING, "true");
+        props.put(AWSSchemaRegistryConstants.SCHEMA_NAME, "person-test-schema");
+        props.put(AWSSchemaRegistryConstants.REGISTRY_NAME, "scott-test"); // If not passed, uses "default-registry"
+        props.put(AWSSchemaRegistryConstants.CACHE_TIME_TO_LIVE_MILLIS, "86400000"); // If not passed, uses 86400000 (24 Hours)
+        props.put(AWSSchemaRegistryConstants.CACHE_SIZE, "10"); // default value is 200
 
         Producer<String, Person> producer = new KafkaProducer<String, Person>(props);
         Person kenny = new Person(12345, "Scott", "Wang", "scott@example.com", 33);
-        producer.send(new ProducerRecord<String, Person>("person-test", String.valueOf(kenny.getId()), kenny));
+        producer.send(new ProducerRecord<String, Person>("person-test-glue", String.valueOf(kenny.getId()), kenny));
 
         producer.close();
     }

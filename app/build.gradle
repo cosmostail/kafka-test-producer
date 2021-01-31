@@ -12,11 +12,6 @@ plugins {
 }
 
 repositories {
-    mavenCentral()
-    maven { url 'https://packages.confluent.io/maven' }
-}
-
-repositories {
     // Use JCenter for resolving dependencies.
     jcenter()
 }
@@ -31,13 +26,9 @@ dependencies {
 
 dependencies {
     implementation 'org.apache.kafka:kafka-clients:2.2.1'
-    implementation 'io.confluent:kafka-avro-serializer:5.3.0'
+    implementation 'software.amazon.glue:schema-registry-serde:1.0.0'
     implementation 'org.apache.avro:avro:1.9.0'
     testImplementation 'junit:junit:4.12'
-}
-
-dependencies {
-    implementation 'org.json:json:20180813'
 }
 
 application {
