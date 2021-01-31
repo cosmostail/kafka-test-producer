@@ -10,7 +10,7 @@ docker exec -it broker kafka-topics --create --topic scott-test --bootstrap-serv
 
 ## read topic
 ``` 
-docker exec -it broker kafka-console-consumer --topic scott-test --from-beginning --bootstrap-server localhost:9092
+docker exec -it broker kafka-console-consumer --topic person-test --from-beginning --bootstrap-server localhost:9092
 ```
 
 ## Avro
