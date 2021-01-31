@@ -1,11 +1,13 @@
 {
   "namespace": "KafkaTest",
+  "compatibility": "BACKWARD",
   "type": "record",
   "name": "Person",
   "fields": [
     {"name": "id", "type": "int"},
     {"name": "first_name", "type": "string"},
     {"name": "last_name", "type": "string"},
-    {"name": "email", "type": "string"}
+    {"name": "email", "type": "string"},
+    {"name": "age", "type": "int", "default": 0}
   ]
 }

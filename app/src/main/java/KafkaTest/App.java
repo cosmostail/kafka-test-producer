@@ -26,7 +26,7 @@ public class App {
         props.put(AbstractKafkaAvroSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, "http://localhost:8081");
 
         Producer<String, Person> producer = new KafkaProducer<String, Person>(props);
-        Person kenny = new Person(12345, "Kenny", "Armstrong", "kenny@example.com");
+        Person kenny = new Person(12345, "Kenny", "Armstrong", "kenny@example.com", 32);
         producer.send(new ProducerRecord<String, Person>("person-test", String.valueOf(kenny.getId()), kenny));
 
         producer.close();
