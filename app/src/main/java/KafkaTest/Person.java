@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class Person extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -5870119234140612153L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Person\",\"namespace\":\"KafkaTest\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"},{\"name\":\"first_name\",\"type\":\"string\"},{\"name\":\"last_name\",\"type\":\"string\"},{\"name\":\"email\",\"type\":\"string\"},{\"name\":\"age\",\"type\":\"int\",\"default\":0},{\"name\":\"phone\",\"type\":\"string\",\"default\":\"\"}],\"compatibility\":\"BACKWARD\"}");
+  private static final long serialVersionUID = -5385955751050010205L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Person\",\"namespace\":\"KafkaTest\",\"fields\":[{\"name\":\"id\",\"type\":\"int\"},{\"name\":\"first_name\",\"type\":\"string\"},{\"name\":\"last_name\",\"type\":\"string\"},{\"name\":\"email\",\"type\":\"string\"},{\"name\":\"age\",\"type\":\"int\",\"default\":0},{\"name\":\"phone\",\"type\":\"string\",\"default\":\"\"},{\"name\":\"address\",\"type\":\"string\",\"default\":\"\"}],\"compatibility\":\"BACKWARD\"}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -77,6 +77,7 @@ public class Person extends org.apache.avro.specific.SpecificRecordBase implemen
    private java.lang.CharSequence email;
    private int age;
    private java.lang.CharSequence phone;
+   private java.lang.CharSequence address;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -93,14 +94,16 @@ public class Person extends org.apache.avro.specific.SpecificRecordBase implemen
    * @param email The new value for email
    * @param age The new value for age
    * @param phone The new value for phone
+   * @param address The new value for address
    */
-  public Person(java.lang.Integer id, java.lang.CharSequence first_name, java.lang.CharSequence last_name, java.lang.CharSequence email, java.lang.Integer age, java.lang.CharSequence phone) {
+  public Person(java.lang.Integer id, java.lang.CharSequence first_name, java.lang.CharSequence last_name, java.lang.CharSequence email, java.lang.Integer age, java.lang.CharSequence phone, java.lang.CharSequence address) {
     this.id = id;
     this.first_name = first_name;
     this.last_name = last_name;
     this.email = email;
     this.age = age;
     this.phone = phone;
+    this.address = address;
   }
 
   public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
@@ -114,6 +117,7 @@ public class Person extends org.apache.avro.specific.SpecificRecordBase implemen
     case 3: return email;
     case 4: return age;
     case 5: return phone;
+    case 6: return address;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -128,6 +132,7 @@ public class Person extends org.apache.avro.specific.SpecificRecordBase implemen
     case 3: email = (java.lang.CharSequence)value$; break;
     case 4: age = (java.lang.Integer)value$; break;
     case 5: phone = (java.lang.CharSequence)value$; break;
+    case 6: address = (java.lang.CharSequence)value$; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -235,6 +240,23 @@ public class Person extends org.apache.avro.specific.SpecificRecordBase implemen
   }
 
   /**
+   * Gets the value of the 'address' field.
+   * @return The value of the 'address' field.
+   */
+  public java.lang.CharSequence getAddress() {
+    return address;
+  }
+
+
+  /**
+   * Sets the value of the 'address' field.
+   * @param value the value to set.
+   */
+  public void setAddress(java.lang.CharSequence value) {
+    this.address = value;
+  }
+
+  /**
    * Creates a new Person RecordBuilder.
    * @return A new Person RecordBuilder
    */
@@ -281,6 +303,7 @@ public class Person extends org.apache.avro.specific.SpecificRecordBase implemen
     private java.lang.CharSequence email;
     private int age;
     private java.lang.CharSequence phone;
+    private java.lang.CharSequence address;
 
     /** Creates a new Builder */
     private Builder() {
@@ -317,6 +340,10 @@ public class Person extends org.apache.avro.specific.SpecificRecordBase implemen
         this.phone = data().deepCopy(fields()[5].schema(), other.phone);
         fieldSetFlags()[5] = other.fieldSetFlags()[5];
       }
+      if (isValidValue(fields()[6], other.address)) {
+        this.address = data().deepCopy(fields()[6].schema(), other.address);
+        fieldSetFlags()[6] = other.fieldSetFlags()[6];
+      }
     }
 
     /**
@@ -348,6 +375,10 @@ public class Person extends org.apache.avro.specific.SpecificRecordBase implemen
       if (isValidValue(fields()[5], other.phone)) {
         this.phone = data().deepCopy(fields()[5].schema(), other.phone);
         fieldSetFlags()[5] = true;
+      }
+      if (isValidValue(fields()[6], other.address)) {
+        this.address = data().deepCopy(fields()[6].schema(), other.address);
+        fieldSetFlags()[6] = true;
       }
     }
 
@@ -589,6 +620,46 @@ public class Person extends org.apache.avro.specific.SpecificRecordBase implemen
       return this;
     }
 
+    /**
+      * Gets the value of the 'address' field.
+      * @return The value.
+      */
+    public java.lang.CharSequence getAddress() {
+      return address;
+    }
+
+
+    /**
+      * Sets the value of the 'address' field.
+      * @param value The value of 'address'.
+      * @return This builder.
+      */
+    public KafkaTest.Person.Builder setAddress(java.lang.CharSequence value) {
+      validate(fields()[6], value);
+      this.address = value;
+      fieldSetFlags()[6] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'address' field has been set.
+      * @return True if the 'address' field has been set, false otherwise.
+      */
+    public boolean hasAddress() {
+      return fieldSetFlags()[6];
+    }
+
+
+    /**
+      * Clears the value of the 'address' field.
+      * @return This builder.
+      */
+    public KafkaTest.Person.Builder clearAddress() {
+      address = null;
+      fieldSetFlags()[6] = false;
+      return this;
+    }
+
     @Override
     @SuppressWarnings("unchecked")
     public Person build() {
@@ -600,6 +671,7 @@ public class Person extends org.apache.avro.specific.SpecificRecordBase implemen
         record.email = fieldSetFlags()[3] ? this.email : (java.lang.CharSequence) defaultValue(fields()[3]);
         record.age = fieldSetFlags()[4] ? this.age : (java.lang.Integer) defaultValue(fields()[4]);
         record.phone = fieldSetFlags()[5] ? this.phone : (java.lang.CharSequence) defaultValue(fields()[5]);
+        record.address = fieldSetFlags()[6] ? this.address : (java.lang.CharSequence) defaultValue(fields()[6]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -644,6 +716,8 @@ public class Person extends org.apache.avro.specific.SpecificRecordBase implemen
 
     out.writeString(this.phone);
 
+    out.writeString(this.address);
+
   }
 
   @Override public void customDecode(org.apache.avro.io.ResolvingDecoder in)
@@ -663,8 +737,10 @@ public class Person extends org.apache.avro.specific.SpecificRecordBase implemen
 
       this.phone = in.readString(this.phone instanceof Utf8 ? (Utf8)this.phone : null);
 
+      this.address = in.readString(this.address instanceof Utf8 ? (Utf8)this.address : null);
+
     } else {
-      for (int i = 0; i < 6; i++) {
+      for (int i = 0; i < 7; i++) {
         switch (fieldOrder[i].pos()) {
         case 0:
           this.id = in.readInt();
@@ -688,6 +764,10 @@ public class Person extends org.apache.avro.specific.SpecificRecordBase implemen
 
         case 5:
           this.phone = in.readString(this.phone instanceof Utf8 ? (Utf8)this.phone : null);
+          break;
+
+        case 6:
+          this.address = in.readString(this.address instanceof Utf8 ? (Utf8)this.address : null);
           break;
 
         default:
