@@ -31,7 +31,7 @@ public class App {
         props.put(AWSSchemaRegistryConstants.CACHE_SIZE, "10"); // default value is 200
 
         Producer<String, Person> producer = new KafkaProducer<String, Person>(props);
-        Person kenny = new Person(12345, "Scott", "Wang", "scott@example.com", 33);
+        Person kenny = new Person(12345, "Scott", "Wang", "scott@example.com", 33, "2505802798");
         producer.send(new ProducerRecord<String, Person>("person-test-glue", String.valueOf(kenny.getId()), kenny));
 
         producer.close();
